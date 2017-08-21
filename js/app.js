@@ -12,7 +12,12 @@
         list.insertBefore(elem, list.firstChild);
         addinput.value = "";
     }
-
+    addinput.addEventListener("keyup", function(e) {
+        e.preventDefault();
+        if (e.keyCode == 13) {
+            addbtn.click();
+        }
+    });
     addbtn.addEventListener("click", function() {
         addItem();
     }, false);
