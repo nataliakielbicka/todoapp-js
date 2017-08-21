@@ -90,33 +90,31 @@ body {
                     margin: 0;
                 }
             }
+            .todo__body__list__remove {
+                background-image: url(../img/remove.svg);
+                background-repeat: no-repeat;
+                background-size: 20px auto;
+                background-position: center center;
+                border: 1px solid $blue;
+                border-radius: 50%;
+                box-shadow: 1px 1px 5px rgba(#2C3E58, 0.75);
+                height: 40px;
+                float: right;
+                width: 40px;
+                margin: 0 0 0 10px;
+            }
+            .todo__body__list__done {
+                background-image: url(../img/done.svg);
+                background-repeat: no-repeat;
+                background-size: 20px auto;
+                background-position: center center;
+                border: 1px solid $blue;
+                border-radius: 50%;
+                box-shadow: 1px 1px 5px rgba(#2C3E58, 0.75);
+                height: 40px;
+                float: right;
+                width: 40px;
+            }
         }
     }
-}
-
-.remove {
-    background-image: url(../img/remove.svg);
-    background-repeat: no-repeat;
-    background-size: 20px auto;
-    background-position: center center;
-    border: 1px solid $blue;
-    border-radius: 50%;
-    box-shadow: 1px 1px 5px rgba(#2C3E58, 0.75);
-    height: 40px;
-    float: right;
-    width: 40px;
-    margin: 0 0 0 10px;
-}
-
-.done {
-    background-image: url(../img/done.svg);
-    background-repeat: no-repeat;
-    background-size: 20px auto;
-    background-position: center center;
-    border: 1px solid $blue;
-    border-radius: 50%;
-    box-shadow: 1px 1px 5px rgba(#2C3E58, 0.75);
-    height: 40px;
-    float: right;
-    width: 40px;
 }

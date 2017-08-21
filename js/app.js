@@ -8,7 +8,7 @@
     function addItem() {
         var li = document.createElement("li"),
             elem = list.appendChild(li);
-        li.innerHTML = "<span class='list-item'>" + addinput.value + "</span><span class='remove'></span><span class='done'></span>";
+        li.innerHTML = "<span class='list-item'>" + addinput.value + "</span><span class='todo__body__list__remove'></span><span class='todo__body__list__done'></span>";
         list.insertBefore(elem, list.firstChild);
         addinput.value = "";
     }
