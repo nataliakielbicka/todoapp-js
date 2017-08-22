@@ -5,6 +5,12 @@
         addbtn = document.getElementById("addbtn"),
         todoList = document.getElementById("todo-list");
 
+    function removeItem() {
+        var item = this.parentNode,
+            removedItem = item.parentNode;
+        todoList.removeChild(removedItem);
+    }
+
     function addItem(liText) {
         var li = document.createElement("li");
         li.innerHTML = "<span class='todo__body__list__item'>" + liText + "</span>";
@@ -24,6 +30,7 @@
         todoList.insertBefore(li, todoList.firstChild);
 
         addinput.value = "";
+        remove.addEventListener("click", removeItem);
     }
     addinput.addEventListener("keyup", function(e) {
         e.preventDefault();
