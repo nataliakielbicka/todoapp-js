@@ -4,12 +4,18 @@
     var addinput = document.getElementById("addinput"),
         addbtn = document.getElementById("addbtn"),
         todoList = document.getElementById("todo-list"),
-        doneList = document.getElementById("done-list");
+        doneList = document.getElementById("done-list"),
+        todoText = document.getElementById("todo-text"),
+        todoTextDone = document.getElementById("todo-text-done");
+    todoText.innerHTML = "You have no tasks to do.";
+    todoTextDone.innerHTML = "You have not completed any task yet.";
 
     function removeItem() {
         var item = this.parentNode.parentNode,
             removedItem = item.parentNode;
         removedItem.removeChild(item);
+        todoText.innerHTML = (todoList.childNodes.length < 1) ? "You have no tasks to do." : "You have any tasks to do.";
+        todoTextDone.innerHTML = (doneList.childNodes.length < 1) ? "You have not completed any task yet." : "You have completed some tasks.";
     }
 
     function doneItems() {
@@ -19,6 +25,8 @@
             target = (id === 'todo-list') ? doneList : todoList;
         doneItem.removeChild(item);
         target.insertBefore(item, target.firstChild);
+        todoText.innerHTML = (todoList.childNodes.length < 1) ? "You have no tasks to do." : "You have any tasks to do.";
+        todoTextDone.innerHTML = (doneList.childNodes.length < 1) ? "You have not completed any task yet." : "You have completed some tasks.";
     }
 
     function addItem(liText) {
@@ -42,6 +50,8 @@
         addinput.value = "";
         remove.addEventListener("click", removeItem);
         done.addEventListener("click", doneItems);
+        todoText.innerHTML = (todoList.childNodes.length < 1) ? "You have no tasks to do." : "You have any tasks to do.";
+        todoTextDone.innerHTML = (doneList.childNodes.length < 1) ? "You have not completed any task yet." : "You have completed some tasks.";
     }
     addinput.addEventListener("keyup", function(e) {
         e.preventDefault();
