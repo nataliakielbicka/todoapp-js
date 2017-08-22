@@ -3,12 +3,22 @@
 
     var addinput = document.getElementById("addinput"),
         addbtn = document.getElementById("addbtn"),
-        todoList = document.getElementById("todo-list");
+        todoList = document.getElementById("todo-list"),
+        doneList = document.getElementById("done-list");
 
     function removeItem() {
-        var item = this.parentNode,
+        var item = this.parentNode.parentNode,
             removedItem = item.parentNode;
-        todoList.removeChild(removedItem);
+        removedItem.removeChild(item);
+    }
+
+    function doneItems() {
+        var item = this.parentNode.parentNode,
+            doneItem = item.parentNode;
+        var id = doneItem.id,
+            target = (id === 'todo-list') ? doneList : todoList;
+        doneItem.removeChild(item);
+        target.insertBefore(item, target.firstChild);
     }
 
     function addItem(liText) {
@@ -31,6 +41,7 @@
 
         addinput.value = "";
         remove.addEventListener("click", removeItem);
+        done.addEventListener("click", doneItems);
     }
     addinput.addEventListener("keyup", function(e) {
         e.preventDefault();
