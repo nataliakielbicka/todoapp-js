@@ -27,6 +27,16 @@ body {
     }
 }
 
+@mixin shadow($color, $opacity) {
+    box-shadow: 1px 1px 5px rgba($color, $opacity);
+}
+
+@mixin bg($size) {
+    background-repeat: no-repeat;
+    background-size: $size auto;
+    background-position: center center;
+}
+
 .todo {
     .todo__header {
         background-color: $blue;
@@ -38,7 +48,7 @@ body {
             background-color: $blue2;
             border: $blue2;
             border-radius: 30px;
-            box-shadow: 1px 1px 5px rgba(#2C3E58, 0.15);
+            @include shadow(#2C3E58, 0.15);
             color: #fff;
             font-size: 22px;
             height: 60px;
@@ -47,13 +57,11 @@ body {
         }
         .todo__header__btn {
             background-image: url(../img/add.svg);
-            background-repeat: no-repeat;
-            background-size: 30px auto;
-            background-position: center center;
+            @include bg(30px);
             background-color: #fff;
             border-radius: 50%;
             border: none;
-            box-shadow: 1px 1px 5px rgba(#2C3E58, 0.15);
+            @include shadow(#2C3E58, 0.15);
             cursor: pointer;
             height: 60px;
             float: right;
@@ -62,7 +70,7 @@ body {
             right: 15px;
             top: 15px;
             &:hover {
-                box-shadow: 1px 1px 5px #2C3E58;
+                @include shadow(#2C3E58, 1);
             }
         }
     }
@@ -78,42 +86,44 @@ body {
                 display: block;
                 background-color: #fff;
                 border-radius: 5px;
-                box-shadow: 1px 1px 5px rgba(#2C3E58, 0.15);
+                @include shadow(#2C3E58, 0.15);
                 margin: 0 0 20px 0;
                 min-height: 60px;
                 padding: 10px;
                 width: 100%;
                 &:hover {
-                    box-shadow: 1px 1px 5px #2C3E58;
+                    @include shadow(#2C3E58, 1);
                 }
                 &:last-child {
                     margin: 0;
                 }
             }
-            .todo__body__list__remove {
-                background-image: url(../img/remove.svg);
-                background-repeat: no-repeat;
-                background-size: 20px auto;
-                background-position: center center;
-                border: 1px solid $blue;
-                border-radius: 50%;
-                box-shadow: 1px 1px 5px rgba(#2C3E58, 0.75);
-                height: 40px;
-                float: right;
-                width: 40px;
-                margin: 0 0 0 10px;
+            .todo__body__list__item {
+                width: calc(100% - 90px);
+                display: block;
+                float: left;
             }
-            .todo__body__list__done {
-                background-image: url(../img/done.svg);
-                background-repeat: no-repeat;
-                background-size: 20px auto;
-                background-position: center center;
-                border: 1px solid $blue;
-                border-radius: 50%;
-                box-shadow: 1px 1px 5px rgba(#2C3E58, 0.75);
-                height: 40px;
+            .todo__body__list__buttons {
                 float: right;
-                width: 40px;
+                width: 90px;
+                .todo__body__list__buttons--remove,
+                .todo__body__list__buttons--done {
+                    @include bg(20px);
+                    border: 1px solid $blue;
+                    border-radius: 50%;
+                    @include shadow(#2C3E58, 0.75);
+                    cursor: pointer;
+                    height: 40px;
+                    float: left;
+                    width: 40px;
+                }
+                .todo__body__list__buttons--remove {
+                    background-image: url(../img/remove.svg);
+                    margin: 0 0 0 10px;
+                }
+                .todo__body__list__buttons--done {
+                    background-image: url(../img/done.svg);
+                }
             }
         }
     }
