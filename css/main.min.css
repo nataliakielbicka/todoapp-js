@@ -124,6 +124,7 @@ table {
 
 html,
 body {
+  color: #212121;
   font-family: 'Roboto', sans-serif;
   font-size: 22px;
   font-weight: 300;
@@ -145,11 +146,16 @@ body {
     margin: 30px 0;
     text-align: center; }
 
+.shadow, .todo .todo__header, .todo .todo__header .todo__header__input, .todo .todo__header .todo__header__btn, .todo .todo__body .todo__body__list li, .todo .todo__body .todo__body__list .todo__body__list__buttons .todo__body__list__buttons--remove,
+.todo .todo__body .todo__body__list .todo__body__list__buttons .todo__body__list__buttons--done, .todo-column {
+  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.23), 0 3px 10px rgba(0, 0, 0, 0.16); }
+
 .todo {
   display: flex;
-  justify-content: space-between; }
+  justify-content: space-between;
+  align-items: flex-start; }
   .todo .todo__header {
-    background-color: #2488FF;
+    background-color: #7B1FA2;
     border-radius: 5px;
     max-width: 500px;
     margin: 0 auto 20px auto;
@@ -157,67 +163,75 @@ body {
     padding: 15px;
     position: relative; }
     .todo .todo__header .todo__header__input {
-      background-color: #9BC9FF;
-      border: #9BC9FF;
-      border-radius: 30px;
-      box-shadow: 1px 1px 5px rgba(44, 62, 88, 0.15);
+      background-color: #9C27B0;
+      border: #9C27B0;
+      border-top-left-radius: 5px;
+      border-bottom-left-radius: 5px;
+      border-top-right-radius: 30px;
+      border-bottom-right-radius: 30px;
       color: #fff;
       font-size: 22px;
       font-weight: 300;
       height: 60px;
-      padding: 10px 20px;
+      padding: 10px 70px 10px 10px;
       width: 100%; }
+      .todo .todo__header .todo__header__input:focus {
+        outline: none; }
     .todo .todo__header .todo__header__btn {
-      background-image: url(../img/add.svg);
-      background-repeat: no-repeat;
-      background-size: 30px auto;
-      background-position: center center;
-      background-color: #fff;
+      background-color: #009688;
       border-radius: 50%;
       border: none;
-      box-shadow: 1px 1px 5px rgba(44, 62, 88, 0.15);
       cursor: pointer;
       height: 60px;
       float: right;
       width: 60px;
       position: absolute;
       right: 15px;
-      top: 15px; }
-      .todo .todo__header .todo__header__btn:hover {
-        box-shadow: 1px 1px 5px #2c3e58; }
+      top: 15px;
+      line-height: 60px;
+      text-align: center; }
+      .todo .todo__header .todo__header__btn:focus {
+        outline: none; }
+      .todo .todo__header .todo__header__btn:before {
+        content: "\f067";
+        color: #fff;
+        font-family: FontAwesome;
+        font-size: 29px;
+        left: 0;
+        position: absolute;
+        top: 0;
+        width: 100%; }
   .todo .todo__body {
-    background-color: #9BC9FF;
+    background-color: #E1BEE7;
     border-bottom-right-radius: 5px;
     border-bottom-left-radius: 5px;
     padding: 15px; }
     .todo .todo__body .todo__body__text {
-      color: #2488FF;
+      color: #7B1FA2;
       font-size: 25px;
       margin: 0 0 30px 0;
       text-align: center; }
     .todo .todo__body .todo__body__list {
       margin: 0;
       padding: 0; }
-      .todo .todo__body .todo__body__list.todo__body__list--done li {
-        background-color: #f1f1f1; }
       .todo .todo__body .todo__body__list.todo__body__list--done .todo__body__list__buttons .todo__body__list__buttons--done {
-        background-color: #00bf9a; }
+        background-color: #009688; }
+        .todo .todo__body .todo__body__list.todo__body__list--done .todo__body__list__buttons .todo__body__list__buttons--done:before {
+          color: #fff; }
       .todo .todo__body .todo__body__list li {
         display: flex;
         align-items: center;
-        background-color: #fff;
+        background-color: #9C27B0;
         border-radius: 5px;
-        box-shadow: 1px 1px 5px rgba(44, 62, 88, 0.15);
+        color: #fff;
         margin: 0 0 20px 0;
         min-height: 60px;
         padding: 10px;
         width: 100%; }
-        .todo .todo__body .todo__body__list li:hover {
-          box-shadow: 1px 1px 5px #2c3e58; }
         .todo .todo__body .todo__body__list li:last-child {
           margin: 0; }
       .todo .todo__body .todo__body__list .todo__body__list__item {
-        width: calc(100% - 90px);
+        width: calc(100% - 100px);
         display: block;
         float: left; }
       .todo .todo__body .todo__body__list .todo__body__list__buttons {
@@ -225,41 +239,60 @@ body {
         width: 90px; }
         .todo .todo__body .todo__body__list .todo__body__list__buttons .todo__body__list__buttons--remove,
         .todo .todo__body .todo__body__list .todo__body__list__buttons .todo__body__list__buttons--done {
-          background-repeat: no-repeat;
-          background-size: 20px auto;
-          background-position: center center;
-          border: 1px solid #2488FF;
           border-radius: 50%;
-          box-shadow: 1px 1px 5px rgba(44, 62, 88, 0.75);
           cursor: pointer;
           height: 40px;
+          line-height: 40px;
           float: left;
-          width: 40px; }
+          width: 40px;
+          position: relative;
+          text-align: center; }
+          .todo .todo__body .todo__body__list .todo__body__list__buttons .todo__body__list__buttons--remove:before,
+          .todo .todo__body .todo__body__list .todo__body__list__buttons .todo__body__list__buttons--done:before {
+            color: #fff;
+            font-family: FontAwesome;
+            font-size: 20px;
+            left: 0;
+            position: absolute;
+            top: 0;
+            width: 100%; }
         .todo .todo__body .todo__body__list .todo__body__list__buttons .todo__body__list__buttons--remove {
-          background-image: url(../img/remove.svg);
+          background-color: #fff;
           margin: 0 0 0 10px; }
+          .todo .todo__body .todo__body__list .todo__body__list__buttons .todo__body__list__buttons--remove:before {
+            content: "\f014";
+            color: #C2185B; }
         .todo .todo__body .todo__body__list .todo__body__list__buttons .todo__body__list__buttons--done {
-          background-image: url(../img/done.svg); }
+          background-color: #fff; }
+          .todo .todo__body .todo__body__list .todo__body__list__buttons .todo__body__list__buttons--done:before {
+            content: "\f00c";
+            color: #009688; }
 
 .todo-column {
   flex: 1;
   width: 100%;
-  max-width: 450px; }
+  max-width: 45%;
+  align-items: top;
+  border-radius: 5px; }
   .todo-column .todo__body {
     border-radius: 5px; }
 
 ::-webkit-input-placeholder {
   /* Chrome/Opera/Safari */
-  color: #fff; }
+  color: #fff;
+  opacity: 0.5; }
 
 ::-moz-placeholder {
   /* Firefox 19+ */
-  color: #fff; }
+  color: #fff;
+  opacity: 0.5; }
 
 :-ms-input-placeholder {
   /* IE 10+ */
-  color: #fff; }
+  color: #fff;
+  opacity: 0.5; }
 
 :-moz-placeholder {
   /* Firefox 18- */
-  color: #fff; }
+  color: #fff;
+  opacity: 0.5; }

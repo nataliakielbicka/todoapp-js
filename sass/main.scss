@@ -132,11 +132,13 @@ table {
     border-spacing: 0;
 }
 
-$blue: #2488FF;
-$blue2: #9BC9FF;
-$blue3: #BDDBFF;
+$color: #7B1FA2;
+$color2: #9C27B0;
+$color3: #E1BEE7;
+$accent: #009688;
 html,
 body {
+    color: #212121;
     font-family: 'Roboto', sans-serif;
     font-size: 22px;
     font-weight: 300;
@@ -162,8 +164,8 @@ body {
     }
 }
 
-@mixin shadow($color, $opacity) {
-    box-shadow: 1px 1px 5px rgba($color, $opacity);
+.shadow {
+    box-shadow: 0 3px 10px rgba(0, 0, 0, .23), 0 3px 10px rgba(0, 0, 0, .16);
 }
 
 @mixin bg($size) {
@@ -175,33 +177,39 @@ body {
 .todo {
     display: flex;
     justify-content: space-between;
+    align-items: flex-start;
     .todo__header {
-        background-color: $blue;
+        background-color: $color;
         border-radius: 5px;
+        @extend .shadow;
         max-width: 500px;
         margin: 0 auto 20px auto;
         width: 100%;
         padding: 15px;
         position: relative;
         .todo__header__input {
-            background-color: $blue2;
-            border: $blue2;
-            border-radius: 30px;
-            @include shadow(#2C3E58, 0.15);
+            background-color: $color2;
+            border: $color2;
+            border-top-left-radius: 5px;
+            border-bottom-left-radius: 5px;
+            border-top-right-radius: 30px;
+            border-bottom-right-radius: 30px;
+            @extend .shadow;
             color: #fff;
             font-size: 22px;
             font-weight: 300;
             height: 60px;
-            padding: 10px 20px;
+            padding: 10px 70px 10px 10px;
             width: 100%;
+            &:focus {
+                outline: none;
+            }
         }
         .todo__header__btn {
-            background-image: url(../img/add.svg);
-            @include bg(30px);
-            background-color: #fff;
+            background-color: $accent;
             border-radius: 50%;
             border: none;
-            @include shadow(#2C3E58, 0.15);
+            @extend .shadow;
             cursor: pointer;
             height: 60px;
             float: right;
@@ -209,18 +217,30 @@ body {
             position: absolute;
             right: 15px;
             top: 15px;
-            &:hover {
-                @include shadow(#2C3E58, 1);
+            line-height: 60px;
+            text-align: center;
+            &:focus {
+                outline: none;
+            }
+            &:before {
+                content: "\f067";
+                color: #fff;
+                font-family: FontAwesome;
+                font-size: 29px;
+                left: 0;
+                position: absolute;
+                top: 0;
+                width: 100%;
             }
         }
     }
     .todo__body {
-        background-color: $blue2;
+        background-color: $color3;
         border-bottom-right-radius: 5px;
         border-bottom-left-radius: 5px;
         padding: 15px;
         .todo__body__text {
-            color: $blue;
+            color: $color;
             font-size: 25px;
             margin: 0 0 30px 0;
             text-align: center;
@@ -229,34 +249,32 @@ body {
             margin: 0;
             padding: 0;
             &.todo__body__list--done {
-                li {
-                    background-color: #f1f1f1;
-                }
                 .todo__body__list__buttons {
                     .todo__body__list__buttons--done {
-                        background-color: #00bf9a;
+                        background-color: $accent;
+                        &:before {
+                            color: #fff;
+                        }
                     }
                 }
             }
             li {
                 display: flex;
                 align-items: center;
-                background-color: #fff;
+                background-color: $color2;
                 border-radius: 5px;
-                @include shadow(#2C3E58, 0.15);
+                color: #fff;
+                @extend .shadow;
                 margin: 0 0 20px 0;
                 min-height: 60px;
                 padding: 10px;
                 width: 100%;
-                &:hover {
-                    @include shadow(#2C3E58, 1);
-                }
                 &:last-child {
                     margin: 0;
                 }
             }
             .todo__body__list__item {
-                width: calc(100% - 90px);
+                width: calc(100% - 100px);
                 display: block;
                 float: left;
             }
@@ -265,21 +283,39 @@ body {
                 width: 90px;
                 .todo__body__list__buttons--remove,
                 .todo__body__list__buttons--done {
-                    @include bg(20px);
-                    border: 1px solid $blue;
                     border-radius: 50%;
-                    @include shadow(#2C3E58, 0.75);
+                    @extend .shadow;
                     cursor: pointer;
                     height: 40px;
+                    line-height: 40px;
                     float: left;
                     width: 40px;
+                    position: relative;
+                    text-align: center;
+                    &:before {
+                        color: #fff;
+                        font-family: FontAwesome;
+                        font-size: 20px;
+                        left: 0;
+                        position: absolute;
+                        top: 0;
+                        width: 100%;
+                    }
                 }
                 .todo__body__list__buttons--remove {
-                    background-image: url(../img/remove.svg);
+                    background-color: #fff;
                     margin: 0 0 0 10px;
+                    &:before {
+                        content: "\f014";
+                        color: #C2185B;
+                    }
                 }
                 .todo__body__list__buttons--done {
-                    background-image: url(../img/done.svg);
+                    background-color: #fff;
+                    &:before {
+                        content: "\f00c";
+                        color: $accent;
+                    }
                 }
             }
         }
@@ -289,7 +325,10 @@ body {
 .todo-column {
     flex: 1;
     width: 100%;
-    max-width: 450px;
+    max-width: 45%;
+    align-items: top;
+    border-radius: 5px;
+    @extend .shadow;
     .todo__body {
         border-radius: 5px;
     }
@@ -298,19 +337,23 @@ body {
 ::-webkit-input-placeholder {
     /* Chrome/Opera/Safari */
     color: #fff;
+    opacity: 0.5;
 }
 
 ::-moz-placeholder {
     /* Firefox 19+ */
     color: #fff;
+    opacity: 0.5;
 }
 
 :-ms-input-placeholder {
     /* IE 10+ */
     color: #fff;
+    opacity: 0.5;
 }
 
 :-moz-placeholder {
     /* Firefox 18- */
     color: #fff;
+    opacity: 0.5;
 }
