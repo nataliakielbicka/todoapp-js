@@ -198,6 +198,10 @@ body {
     .todo .todo__body .todo__body__list {
       margin: 0;
       padding: 0; }
+      .todo .todo__body .todo__body__list.todo__body__list--done li {
+        background-color: #f1f1f1; }
+      .todo .todo__body .todo__body__list.todo__body__list--done .todo__body__list__buttons .todo__body__list__buttons--done {
+        background-color: #00bf9a; }
       .todo .todo__body .todo__body__list li {
         display: flex;
         align-items: center;
