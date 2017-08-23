@@ -23,8 +23,19 @@
 
     function removeItem() {
         var item = this.parentNode.parentNode,
-            removedItem = item.parentNode;
+            removedItem = item.parentNode,
+            removed = document.getElementById("removed"),
+            remChild = removed.children;
         removedItem.removeChild(item);
+        remChild.innerHTML = "";
+        removed.style.display = "flex";
+        remChild[0].innerHTML = "<a href='#' id='close'><i class='fa fa-close'></i></a> You removed&nbsp<strong>" + item.firstChild.textContent + "</strong>&nbspfrom list.";
+        var close = document.getElementById("close");
+        close.addEventListener("click", function(e) {
+            e.preventDefault();
+            var removed = document.getElementById("removed");
+            removed.style.display = "none";
+        });
         displayInfoTodo();
         displayInfoDone();
     }

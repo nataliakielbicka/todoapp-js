@@ -137,6 +137,9 @@ body {
 * {
   box-sizing: border-box; }
 
+strong {
+  font-weight: bold; }
+
 .container {
   display: block;
   margin: auto;
@@ -148,7 +151,7 @@ body {
     text-align: center; }
 
 .shadow, .todo .todo__header, .todo .todo__header .todo__header__input, .todo .todo__header .todo__header__btn, .todo .todo__warning, .todo .todo__body .todo__body__list li, .todo .todo__body .todo__body__list .todo__body__list__buttons .todo__body__list__buttons--remove,
-.todo .todo__body .todo__body__list .todo__body__list__buttons .todo__body__list__buttons--done, .todo-column {
+.todo .todo__body .todo__body__list .todo__body__list__buttons .todo__body__list__buttons--done, .todo-column, .removed .removed__body, .removed .removed__body .fa {
   box-shadow: 0 3px 10px rgba(0, 0, 0, 0.23), 0 3px 10px rgba(0, 0, 0, 0.16); }
 
 .todo {
@@ -222,8 +225,6 @@ body {
       font-size: 25px;
       margin: 0 0 30px 0;
       text-align: center; }
-      .todo .todo__body .todo__body__text strong {
-        font-weight: bold; }
     .todo .todo__body .todo__body__list {
       margin: 0;
       padding: 0; }
@@ -294,6 +295,49 @@ body {
   border-radius: 5px; }
   .todo-column .todo__body {
     border-radius: 5px; }
+
+.removed {
+  display: none;
+  align-items: center;
+  justify-content: center;
+  position: fixed;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  z-index: 10;
+  background-color: rgba(0, 0, 0, 0.85); }
+  .removed .removed__body {
+    background-color: #9C27B0;
+    border-radius: 5px;
+    color: #fff;
+    font-size: 30px;
+    padding: 10px;
+    width: 50%;
+    height: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    position: relative; }
+    .removed .removed__body strong {
+      color: #E1BEE7;
+      font-style: italic;
+      margin: 10px 0;
+      text-align: center;
+      text-transform: uppercase; }
+    .removed .removed__body .fa {
+      position: absolute;
+      right: 10px;
+      top: 10px;
+      background-color: #fff;
+      border-radius: 50%;
+      color: #009688;
+      font-size: 22px;
+      width: 40px;
+      height: 40px;
+      line-height: 40px;
+      text-align: center; }
 
 ::-webkit-input-placeholder {
   /* Chrome/Opera/Safari */
