@@ -140,7 +140,7 @@ html,
 body {
     color: #212121;
     font-family: 'Roboto', sans-serif;
-    font-size: 22px;
+    font-size: 20px;
     font-weight: 300;
     margin: 0 !important;
     padding: 0 !important;
@@ -162,14 +162,14 @@ strong {
     margin: auto;
     max-width: 1000px;
     h2 {
-        font-size: 30px;
+        font-size: 34px;
         font-weight: bold;
         margin: 30px 0;
         text-align: center;
     }
 }
 
-.shadow {
+%shadow {
     box-shadow: 0 3px 10px rgba(0, 0, 0, .23), 0 3px 10px rgba(0, 0, 0, .16);
 }
 
@@ -187,7 +187,7 @@ strong {
     .todo__header {
         background-color: $color;
         border-radius: 5px;
-        @extend .shadow;
+        @extend %shadow;
         max-width: 500px;
         margin: 0 auto 20px auto;
         width: 100%;
@@ -200,9 +200,9 @@ strong {
             border-bottom-left-radius: 5px;
             border-top-right-radius: 30px;
             border-bottom-right-radius: 30px;
-            @extend .shadow;
+            @extend %shadow;
             color: #fff;
-            font-size: 22px;
+            font-size: 20px;
             font-weight: 300;
             height: 60px;
             padding: 10px 70px 10px 10px;
@@ -215,7 +215,7 @@ strong {
             background-color: $accent;
             border-radius: 50%;
             border: none;
-            @extend .shadow;
+            @extend %shadow;
             cursor: pointer;
             height: 60px;
             float: right;
@@ -244,8 +244,8 @@ strong {
         background-color: $accent;
         border-radius: 5px;
         color: #fff;
-        font-size: 18px;
-        @extend .shadow;
+        font-size: 16px;
+        @extend %shadow;
         margin: 0 0 20px 0;
         opacity: 0;
         padding: 10px;
@@ -256,9 +256,22 @@ strong {
         border-bottom-right-radius: 5px;
         border-bottom-left-radius: 5px;
         padding: 15px;
+        .todo__body__h2 {
+            color: #fff;
+            background-color: $accent;
+            border-radius: 5px;
+            font-size: 20px;
+            @extend %shadow;
+            padding: 10px;
+            margin: 0 0 30px 0;
+            .fa {
+                float: right;
+            }
+        }
         .todo__body__text {
-            color: $color;
-            font-size: 25px;
+            color: #212121;
+            ;
+            font-size: 16px;
             margin: 0 0 30px 0;
             text-align: center;
         }
@@ -272,6 +285,13 @@ strong {
                         &:before {
                             color: #fff;
                         }
+                        &:hover {
+                            background-color: #fff;
+                            transition: 0.2s ease-in;
+                            &:before {
+                                color: $accent;
+                            }
+                        }
                     }
                 }
             }
@@ -281,7 +301,7 @@ strong {
                 background-color: $color2;
                 border-radius: 5px;
                 color: #fff;
-                @extend .shadow;
+                @extend %shadow;
                 margin: 0 0 20px 0;
                 min-height: 60px;
                 padding: 10px;
@@ -302,7 +322,7 @@ strong {
                 .todo__body__list__buttons--remove,
                 .todo__body__list__buttons--done {
                     border-radius: 50%;
-                    @extend .shadow;
+                    @extend %shadow;
                     cursor: pointer;
                     height: 40px;
                     line-height: 40px;
@@ -319,6 +339,12 @@ strong {
                         top: 0;
                         width: 100%;
                     }
+                    &:hover {
+                        transition: 0.2s ease-in;
+                        &:before {
+                            color: #fff;
+                        }
+                    }
                 }
                 .todo__body__list__buttons--remove {
                     background-color: #fff;
@@ -327,12 +353,18 @@ strong {
                         content: "\f014";
                         color: #C2185B;
                     }
+                    &:hover {
+                        background-color: #C2185B;
+                    }
                 }
                 .todo__body__list__buttons--done {
                     background-color: #fff;
                     &:before {
                         content: "\f00c";
                         color: $accent;
+                    }
+                    &:hover {
+                        background-color: $accent;
                     }
                 }
             }
@@ -351,7 +383,7 @@ strong {
     max-width: 45%;
     align-items: top;
     border-radius: 5px;
-    @extend .shadow;
+    @extend %shadow;
     .todo__body {
         border-radius: 5px;
     }
@@ -372,8 +404,8 @@ strong {
         background-color: $color2;
         border-radius: 5px;
         color: #fff;
-        font-size: 30px;
-        @extend .shadow;
+        font-size: 34px;
+        @extend %shadow;
         padding: 10px;
         width: 50%;
         height: 50%;
@@ -396,8 +428,8 @@ strong {
             background-color: #fff;
             border-radius: 50%;
             color: $accent;
-            font-size: 22px;
-            @extend .shadow;
+            font-size: 20px;
+            @extend %shadow;
             width: 40px;
             height: 40px;
             line-height: 40px;

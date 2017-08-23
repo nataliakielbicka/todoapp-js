@@ -126,7 +126,7 @@ html,
 body {
   color: #212121;
   font-family: 'Roboto', sans-serif;
-  font-size: 22px;
+  font-size: 20px;
   font-weight: 300;
   margin: 0 !important;
   padding: 0 !important;
@@ -145,12 +145,12 @@ strong {
   margin: auto;
   max-width: 1000px; }
   .container h2 {
-    font-size: 30px;
+    font-size: 34px;
     font-weight: bold;
     margin: 30px 0;
     text-align: center; }
 
-.shadow, .todo .todo__header, .todo .todo__header .todo__header__input, .todo .todo__header .todo__header__btn, .todo .todo__warning, .todo .todo__body .todo__body__list li, .todo .todo__body .todo__body__list .todo__body__list__buttons .todo__body__list__buttons--remove,
+.todo .todo__header, .todo .todo__header .todo__header__input, .todo .todo__header .todo__header__btn, .todo .todo__warning, .todo .todo__body .todo__body__h2, .todo .todo__body .todo__body__list li, .todo .todo__body .todo__body__list .todo__body__list__buttons .todo__body__list__buttons--remove,
 .todo .todo__body .todo__body__list .todo__body__list__buttons .todo__body__list__buttons--done, .todo-column, .removed .removed__body, .removed .removed__body .fa {
   box-shadow: 0 3px 10px rgba(0, 0, 0, 0.23), 0 3px 10px rgba(0, 0, 0, 0.16); }
 
@@ -175,7 +175,7 @@ strong {
       border-top-right-radius: 30px;
       border-bottom-right-radius: 30px;
       color: #fff;
-      font-size: 22px;
+      font-size: 20px;
       font-weight: 300;
       height: 60px;
       padding: 10px 70px 10px 10px;
@@ -210,7 +210,7 @@ strong {
     background-color: #009688;
     border-radius: 5px;
     color: #fff;
-    font-size: 18px;
+    font-size: 16px;
     margin: 0 0 20px 0;
     opacity: 0;
     padding: 10px;
@@ -220,9 +220,18 @@ strong {
     border-bottom-right-radius: 5px;
     border-bottom-left-radius: 5px;
     padding: 15px; }
+    .todo .todo__body .todo__body__h2 {
+      color: #fff;
+      background-color: #009688;
+      border-radius: 5px;
+      font-size: 20px;
+      padding: 10px;
+      margin: 0 0 30px 0; }
+      .todo .todo__body .todo__body__h2 .fa {
+        float: right; }
     .todo .todo__body .todo__body__text {
-      color: #7B1FA2;
-      font-size: 25px;
+      color: #212121;
+      font-size: 16px;
       margin: 0 0 30px 0;
       text-align: center; }
     .todo .todo__body .todo__body__list {
@@ -232,6 +241,11 @@ strong {
         background-color: #009688; }
         .todo .todo__body .todo__body__list.todo__body__list--done .todo__body__list__buttons .todo__body__list__buttons--done:before {
           color: #fff; }
+        .todo .todo__body .todo__body__list.todo__body__list--done .todo__body__list__buttons .todo__body__list__buttons--done:hover {
+          background-color: #fff;
+          transition: 0.2s ease-in; }
+          .todo .todo__body .todo__body__list.todo__body__list--done .todo__body__list__buttons .todo__body__list__buttons--done:hover:before {
+            color: #009688; }
       .todo .todo__body .todo__body__list li {
         display: flex;
         align-items: center;
@@ -271,17 +285,27 @@ strong {
             position: absolute;
             top: 0;
             width: 100%; }
+          .todo .todo__body .todo__body__list .todo__body__list__buttons .todo__body__list__buttons--remove:hover,
+          .todo .todo__body .todo__body__list .todo__body__list__buttons .todo__body__list__buttons--done:hover {
+            transition: 0.2s ease-in; }
+            .todo .todo__body .todo__body__list .todo__body__list__buttons .todo__body__list__buttons--remove:hover:before,
+            .todo .todo__body .todo__body__list .todo__body__list__buttons .todo__body__list__buttons--done:hover:before {
+              color: #fff; }
         .todo .todo__body .todo__body__list .todo__body__list__buttons .todo__body__list__buttons--remove {
           background-color: #fff;
           margin: 0 0 0 10px; }
           .todo .todo__body .todo__body__list .todo__body__list__buttons .todo__body__list__buttons--remove:before {
             content: "\f014";
             color: #C2185B; }
+          .todo .todo__body .todo__body__list .todo__body__list__buttons .todo__body__list__buttons--remove:hover {
+            background-color: #C2185B; }
         .todo .todo__body .todo__body__list .todo__body__list__buttons .todo__body__list__buttons--done {
           background-color: #fff; }
           .todo .todo__body .todo__body__list .todo__body__list__buttons .todo__body__list__buttons--done:before {
             content: "\f00c";
             color: #009688; }
+          .todo .todo__body .todo__body__list .todo__body__list__buttons .todo__body__list__buttons--done:hover {
+            background-color: #009688; }
 
 .todo-boxes {
   align-items: flex-start;
@@ -311,7 +335,7 @@ strong {
     background-color: #9C27B0;
     border-radius: 5px;
     color: #fff;
-    font-size: 30px;
+    font-size: 34px;
     padding: 10px;
     width: 50%;
     height: 50%;
@@ -333,7 +357,7 @@ strong {
       background-color: #fff;
       border-radius: 50%;
       color: #009688;
-      font-size: 22px;
+      font-size: 20px;
       width: 40px;
       height: 40px;
       line-height: 40px;
