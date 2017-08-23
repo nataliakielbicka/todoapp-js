@@ -4,6 +4,7 @@
     var addinput = document.getElementById("addinput"),
         addbtn = document.getElementById("addbtn"),
         todoList = document.getElementById("todo-list"),
+        warning = document.getElementById("warning"),
         doneList = document.getElementById("done-list"),
         todoText = document.getElementById("todo-text"),
         todoTextDone = document.getElementById("todo-text-done");
@@ -12,12 +13,12 @@
 
     function displayInfoTodo() {
         var tdlNr = todoList.childNodes.length;
-        todoText.innerHTML = (tdlNr < 1) ? "You have no tasks to do." : (tdlNr === 1) ? "You have 1 task to do." : "You have " + tdlNr + " tasks to do.";
+        todoText.innerHTML = (tdlNr < 1) ? "You have no tasks to do." : (tdlNr === 1) ? "You have <strong>1</strong> task to do." : "You have <strong>" + tdlNr + "</strong> tasks to do.";
     }
 
     function displayInfoDone() {
         var dlNr = doneList.childNodes.length;
-        todoTextDone.innerHTML = (dlNr < 1) ? "You have not completed any task yet." : (dlNr === 1) ? "You have completed 1 task." : "You have completed " + dlNr + " tasks.";
+        todoTextDone.innerHTML = (dlNr < 1) ? "You have not completed any task yet." : (dlNr === 1) ? "You have completed <strong>1</strong> task." : "You have completed <strong>" + dlNr + "</strong> tasks.";
     }
 
     function removeItem() {
@@ -32,7 +33,7 @@
         var item = this.parentNode.parentNode,
             doneItem = item.parentNode,
             id = doneItem.id,
-            target = (id === 'todo-list') ? doneList : todoList;
+            target = (id === "todo-list") ? doneList : todoList;
         doneItem.removeChild(item);
         target.insertBefore(item, target.firstChild);
         displayInfoTodo();
@@ -55,7 +56,18 @@
         buttons.appendChild(done);
         buttons.appendChild(remove);
         li.appendChild(buttons);
-        todoList.insertBefore(li, todoList.firstChild);
+
+        var todoListStr = todoList.innerHTML.toString().toLowerCase(),
+            pattern = new RegExp("\\b" + liText.toLowerCase() + "\\b");
+        if (todoListStr.match(pattern, "g")) {
+            warning.style.opacity = 1;
+            document.body.addEventListener("change", function() {
+                warning.style.opacity = 0;
+            });
+        } else {
+            todoList.insertBefore(li, todoList.firstChild);
+            warning.style.opacity = 0;
+        }
 
         addinput.value = "";
         remove.addEventListener("click", removeItem);
