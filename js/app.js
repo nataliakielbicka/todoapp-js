@@ -11,11 +11,13 @@
     todoTextDone.innerHTML = "You have not completed any task yet.";
 
     function displayInfoTodo() {
-        todoText.innerHTML = (todoList.childNodes.length < 1) ? "You have no tasks to do." : (todoList.childNodes.length === 1) ? "You have 1 task to do." : "You have " + todoList.childNodes.length + " tasks to do.";
+        var tdlNr = todoList.childNodes.length;
+        todoText.innerHTML = (tdlNr < 1) ? "You have no tasks to do." : (tdlNr === 1) ? "You have 1 task to do." : "You have " + tdlNr + " tasks to do.";
     }
 
     function displayInfoDone() {
-        todoTextDone.innerHTML = (doneList.childNodes.length < 1) ? "You have not completed any task yet." : (doneList.childNodes.length === 1) ? "You have completed 1 task." : "You have completed " + doneList.childNodes.length + " tasks.";
+        var dlNr = doneList.childNodes.length;
+        todoTextDone.innerHTML = (dlNr < 1) ? "You have not completed any task yet." : (dlNr === 1) ? "You have completed 1 task." : "You have completed " + dlNr + " tasks.";
     }
 
     function removeItem() {
