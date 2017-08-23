@@ -10,23 +10,31 @@
     todoText.innerHTML = "You have no tasks to do.";
     todoTextDone.innerHTML = "You have not completed any task yet.";
 
+    function displayInfoTodo() {
+        todoText.innerHTML = (todoList.childNodes.length < 1) ? "You have no tasks to do." : (todoList.childNodes.length === 1) ? "You have 1 task to do." : "You have " + todoList.childNodes.length + " tasks to do.";
+    }
+
+    function displayInfoDone() {
+        todoTextDone.innerHTML = (doneList.childNodes.length < 1) ? "You have not completed any task yet." : (doneList.childNodes.length === 1) ? "You have completed 1 task." : "You have completed " + doneList.childNodes.length + " tasks.";
+    }
+
     function removeItem() {
         var item = this.parentNode.parentNode,
             removedItem = item.parentNode;
         removedItem.removeChild(item);
-        todoText.innerHTML = (todoList.childNodes.length < 1) ? "You have no tasks to do." : "You have any tasks to do.";
-        todoTextDone.innerHTML = (doneList.childNodes.length < 1) ? "You have not completed any task yet." : "You have completed some tasks.";
+        displayInfoTodo();
+        displayInfoDone();
     }
 
     function doneItems() {
         var item = this.parentNode.parentNode,
-            doneItem = item.parentNode;
-        var id = doneItem.id,
+            doneItem = item.parentNode,
+            id = doneItem.id,
             target = (id === 'todo-list') ? doneList : todoList;
         doneItem.removeChild(item);
         target.insertBefore(item, target.firstChild);
-        todoText.innerHTML = (todoList.childNodes.length < 1) ? "You have no tasks to do." : "You have any tasks to do.";
-        todoTextDone.innerHTML = (doneList.childNodes.length < 1) ? "You have not completed any task yet." : "You have completed some tasks.";
+        displayInfoTodo();
+        displayInfoDone();
     }
 
     function addItem(liText) {
@@ -50,8 +58,8 @@
         addinput.value = "";
         remove.addEventListener("click", removeItem);
         done.addEventListener("click", doneItems);
-        todoText.innerHTML = (todoList.childNodes.length < 1) ? "You have no tasks to do." : "You have any tasks to do.";
-        todoTextDone.innerHTML = (doneList.childNodes.length < 1) ? "You have not completed any task yet." : "You have completed some tasks.";
+        displayInfoTodo();
+        displayInfoDone();
     }
     addinput.addEventListener("keyup", function(e) {
         e.preventDefault();
