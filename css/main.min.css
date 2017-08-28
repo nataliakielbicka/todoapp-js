@@ -114,6 +114,7 @@ strong {
         float: right; }
     .todo .todo__body .todo__body__text {
       color: #212121;
+      font-weight: 300;
       font-size: 16px;
       margin: 0 0 30px 0;
       text-align: center; }
