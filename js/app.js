@@ -53,16 +53,18 @@
 
     function addItem(liText) {
         var li = document.createElement("li");
-        li.innerHTML = "<span class='todo__body__list__item'>" + liText + "</span>";
+        li.classList.add("list__item");
+        li.classList.add("item");
+        li.innerHTML = "<span class='item__text'>" + liText + "</span>";
 
         var buttons = document.createElement("span");
-        buttons.classList.add("todo__body__list__buttons");
+        buttons.classList.add("item__buttons");
 
         var done = document.createElement("span");
-        done.classList.add("todo__body__list__buttons--done");
+        done.classList.add("item__buttons--done");
 
         var remove = document.createElement("span");
-        remove.classList.add("todo__body__list__buttons--remove");
+        remove.classList.add("item__buttons--remove");
 
         buttons.appendChild(done);
         buttons.appendChild(remove);

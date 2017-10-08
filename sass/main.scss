@@ -13,8 +13,8 @@ body {
     font-family: 'Roboto', sans-serif;
     font-size: 20px;
     font-weight: 300;
-    margin: 0 !important;
-    padding: 0 !important;
+    margin: 0;
+    padding: 0;
     width: 100%;
     height: 100%;
     overflow-x: hidden;
@@ -28,23 +28,22 @@ strong {
     font-weight: bold;
 }
 
-.container {
-    display: block;
-    margin: auto;
-    max-width: 1000px;
-    @media all and (max-width: 768px) {
-        padding: 0 10px;
-    }
-    h2 {
-        font-size: 34px;
-        font-weight: bold;
-        margin: 30px 0;
-        text-align: center;
-    }
-}
-
 %shadow {
     box-shadow: 0 3px 10px rgba(0, 0, 0, .23), 0 3px 10px rgba(0, 0, 0, .16);
+}
+@mixin radius($top,$right,$bottom,$left) {
+    border-top-left-radius: $top;
+    border-top-right-radius: $right;
+    border-bottom-right-radius: $bottom;
+    border-bottom-left-radius: $left;
+}
+
+@mixin absolute($top,$right,$bottom,$left) {
+    position: absolute;
+    top: $top;
+    right: $right;
+    bottom: $bottom;
+    left: $left;
 }
 
 @mixin bg($size) {
@@ -53,70 +52,79 @@ strong {
     background-position: center center;
 }
 
+.todo-wrapper {
+    display: block;
+    margin: auto;
+    max-width: 1000px;
+    @media all and (max-width: 768px) {
+        padding: 0 10px;
+    }
+    &__h2 {
+        font-size: 34px;
+        font-weight: bold;
+        margin: 30px 0;
+        text-align: center;
+    }
+}
+
 .todo {
     display: flex;
     justify-content: space-between;
     align-items: center;
     flex-direction: column;
-    .todo__header {
+    &__header {
         background-color: $color;
-        border-radius: 5px;
+        @include radius(5px,5px,5px,5px);
         @extend %shadow;
         max-width: 500px;
         margin: 0 auto 20px auto;
         width: 100%;
         padding: 15px;
         position: relative;
-        .todo__header__input {
-            background-color: $color2;
-            border: $color2;
-            border-top-left-radius: 5px;
-            border-bottom-left-radius: 5px;
-            border-top-right-radius: 30px;
-            border-bottom-right-radius: 30px;
-            @extend %shadow;
-            color: #fff;
-            font-size: 20px;
-            font-weight: 300;
-            height: 60px;
-            padding: 10px 70px 10px 10px;
-            width: 100%;
-            &:focus {
-                outline: none;
-            }
-        }
-        .todo__header__btn {
-            background-color: $accent;
-            border-radius: 50%;
-            border: none;
-            @extend %shadow;
-            cursor: pointer;
-            height: 60px;
-            float: right;
-            width: 60px;
-            position: absolute;
-            right: 15px;
-            top: 15px;
-            line-height: 60px;
-            text-align: center;
-            &:focus {
-                outline: none;
-            }
-            &:before {
-                content: "\f067";
-                color: #fff;
-                font-family: FontAwesome;
-                font-size: 29px;
-                left: 0;
-                position: absolute;
-                top: 0;
-                width: 100%;
-            }
+        
+    }
+    &__input {
+        background-color: $color2;
+        border: $color2;
+        @include radius(5px,30px,30px,5px);
+        @extend %shadow;
+        color: #fff;
+        font-size: 20px;
+        font-weight: 300;
+        height: 60px;
+        padding: 10px 70px 10px 10px;
+        width: 100%;
+        &:focus {
+            outline: none;
         }
     }
-    .todo__warning {
+    &__btn {
         background-color: $accent;
-        border-radius: 5px;
+        border-radius: 50%;
+        border: none;
+        @extend %shadow;
+        cursor: pointer;
+        height: 60px;
+        float: right;
+        width: 60px;
+        @include absolute(15px,15px,auto,auto);
+        line-height: 60px;
+        text-align: center;
+        &:focus {
+            outline: none;
+        }
+        &:before {
+            content: "\f067";
+            color: #fff;
+            font-family: FontAwesome;
+            font-size: 29px;
+            @include absolute(0,auto,auto,0);
+            width: 100%;
+        }
+    }
+    &__warning {
+        background-color: $accent;
+        @include radius(5px,5px,5px,5px);
         color: #fff;
         font-size: 16px;
         @extend %shadow;
@@ -125,150 +133,151 @@ strong {
         padding: 10px;
         transition: 0.5s ease-in;
     }
-    .todo__body {
+    &__body {
         background-color: $color3;
-        border-bottom-right-radius: 5px;
-        border-bottom-left-radius: 5px;
+        @include radius(0,0,5px,5px);
         padding: 15px;
-        .todo__body__h2 {
-            color: #fff;
-            background-color: $accent;
-            border-radius: 5px;
-            font-size: 20px;
-            @extend %shadow;
-            padding: 10px;
-            margin: 0 0 30px 0;
-            .fa {
-                float: right;
-            }
+        
+    }
+    &__h2 {
+        color: #fff;
+        background-color: $accent;
+        @include radius(5px,5px,5px,5px);
+        font-size: 20px;
+        @extend %shadow;
+        padding: 10px;
+        margin: 0 0 30px 0;
+        .fa {
+            float: right;
         }
-        .todo__body__text {
-            color: #212121;
-            font-weight: 300;
-            font-size: 16px;
-            margin: 0 0 30px 0;
-            text-align: center;
-        }
-        .todo__body__list {
-            margin: 0;
-            padding: 0;
-            &.todo__body__list--done {
-                .todo__body__list__buttons {
-                    .todo__body__list__buttons--done {
-                        background-color: $accent;
-                        &:before {
-                            color: #fff;
-                        }
-                        &:hover {
-                            background-color: #fff;
-                            transition: 0.2s ease-in;
-                            &:before {
-                                color: $accent;
-                            }
-                        }
-                    }
-                }
-            }
-            li {
-                display: flex;
-                align-items: center;
-                background-color: $color2;
-                border-radius: 5px;
-                color: #fff;
-                @extend %shadow;
-                margin: 0 0 20px 0;
-                min-height: 60px;
-                padding: 10px;
-                width: 100%;
-                &:last-child {
-                    margin: 0;
-                }
-            }
-            .todo__body__list__item {
-                width: calc(100% - 100px);
-                display: block;
-                float: left;
-            }
-            .todo__body__list__buttons {
-                float: right;
-                width: 90px;
-                margin: 0 0 0 10px;
-                .todo__body__list__buttons--remove,
-                .todo__body__list__buttons--done {
-                    border-radius: 50%;
-                    @extend %shadow;
-                    cursor: pointer;
-                    height: 40px;
-                    line-height: 40px;
-                    float: left;
-                    width: 40px;
-                    position: relative;
-                    text-align: center;
+    }
+    &__text {
+        color: #212121;
+        font-weight: 300;
+        font-size: 16px;
+        margin: 0 0 30px 0;
+        text-align: center;
+    }
+    &__list {
+        margin: 0;
+        padding: 0;
+        &--done {
+            .item__buttons {
+                &--done {
+                    background-color: $accent;
                     &:before {
                         color: #fff;
-                        font-family: FontAwesome;
-                        font-size: 20px;
-                        left: 0;
-                        position: absolute;
-                        top: 0;
-                        width: 100%;
                     }
                     &:hover {
+                        background-color: #fff;
                         transition: 0.2s ease-in;
                         &:before {
-                            color: #fff;
+                            color: $accent;
                         }
-                    }
-                }
-                .todo__body__list__buttons--remove {
-                    background-color: #fff;
-                    margin: 0 0 0 10px;
-                    &:before {
-                        content: "\f014";
-                        color: #C2185B;
-                    }
-                    &:hover {
-                        background-color: #C2185B;
-                    }
-                }
-                .todo__body__list__buttons--done {
-                    background-color: #fff;
-                    &:before {
-                        content: "\f00c";
-                        color: $accent;
-                    }
-                    &:hover {
-                        background-color: $accent;
                     }
                 }
             }
         }
     }
+    &-boxes {
+        align-items: flex-start;
+        flex-direction: row;
+        @media screen and (max-width: 768px) {
+            align-items: center;
+            flex-direction: column;
+        }
+    }
+    &__column {
+        flex: 1;
+        width: 100%;
+        max-width: 45%;
+        align-items: top;
+        @include radius(5px,5px,5px,5px);
+        margin: 0 0 15px 0;
+        @extend %shadow;
+        @media screen and (max-width: 768px) {
+            max-width: 500px;
+            margin: 0 0 30px 0;
+        } 
+    }
+    &__body {
+        @include radius(5px,5px,5px,5px);
+    }
 }
-
-.todo-boxes {
-    align-items: flex-start;
-    flex-direction: row;
-    @media screen and (max-width: 768px) {
+.list {
+    &__item {
+        display: flex;
         align-items: center;
-        flex-direction: column;
+        background-color: $color2;
+        @include radius(5px,5px,5px,5px);
+        color: #fff;
+        @extend %shadow;
+        margin: 0 0 20px 0;
+        min-height: 60px;
+        padding: 10px;
+        width: 100%;
+        &:last-child {
+            margin: 0;
+        }
+         
     }
 }
-
-.todo-column {
-    flex: 1;
-    width: 100%;
-    max-width: 45%;
-    align-items: top;
-    border-radius: 5px;
-    margin: 0 0 15px 0;
-    @extend %shadow;
-    @media screen and (max-width: 768px) {
-        max-width: 500px;
-        margin: 0 0 30px 0;
+.item {
+    &__text {
+        width: calc(100% - 100px);
+        display: block;
+        float: left;
     }
-    .todo__body {
-        border-radius: 5px;
+    &__buttons {
+        float: right;
+        width: 90px;
+        margin: 0 0 0 10px;
+        &--remove,
+        &--done {
+            border-radius: 50%;
+            @extend %shadow;
+            cursor: pointer;
+            height: 40px;
+            line-height: 40px;
+            float: left;
+            width: 40px;
+            position: relative;
+            text-align: center;
+            &:before {
+                color: #fff;
+                font-family: FontAwesome;
+                font-size: 20px;
+                @include absolute(0,auto,auto,0);
+                width: 100%;
+            }
+            &:hover {
+                transition: 0.2s ease-in;
+                &:before {
+                    color: #fff;
+                }
+            }
+        }
+        &--remove {
+            background-color: #fff;
+            margin: 0 0 0 10px;
+            &:before {
+                content: "\f014";
+                color: #C2185B;
+            }
+            &:hover {
+                background-color: #C2185B;
+            }
+        }
+        &--done {
+            background-color: #fff;
+            &:before {
+                content: "\f00c";
+                color: $accent;
+            }
+            &:hover {
+                background-color: $accent;
+            }
+        }
     }
 }
 
@@ -283,9 +292,9 @@ strong {
     right: 0;
     z-index: 10;
     background-color: rgba(0, 0, 0, 0.85);
-    .removed__body {
+    &__body {
         background-color: $color2;
-        border-radius: 5px;
+        @include radius(5px,5px,5px,5px);
         color: #fff;
         font-size: 34px;
         @extend %shadow;
@@ -309,9 +318,7 @@ strong {
             text-transform: uppercase;
         }
         .fa {
-            position: absolute;
-            right: 10px;
-            top: 10px;
+            @include absolute(10px,10px,auto,auto);
             background-color: #fff;
             border-radius: 50%;
             color: $accent;
@@ -327,9 +334,7 @@ strong {
 
 .copy {
     font-size: 14px;
-    position: absolute;
-    bottom: 10px;
-    right: 30px;
+    @include absolute(auto,30px,10px,auto);
 }
 
 ::-webkit-input-placeholder {
