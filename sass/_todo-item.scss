@@ -1,0 +1,58 @@
+.item {
+    &__text {
+        width: calc(100% - 100px);
+        display: block;
+        float: left;
+    }
+    &__buttons {
+        float: right;
+        width: 90px;
+        margin: 0 0 0 10px;
+        &--remove,
+        &--done {
+            border-radius: 50%;
+            @extend %shadow;
+            cursor: pointer;
+            height: 40px;
+            line-height: 40px;
+            float: left;
+            width: 40px;
+            position: relative;
+            text-align: center;
+            &:before {
+                color: #fff;
+                font-family: FontAwesome;
+                font-size: 20px;
+                @include absolute(0,auto,auto,0);
+                width: 100%;
+            }
+            &:hover {
+                transition: 0.2s ease-in;
+                &:before {
+                    color: #fff;
+                }
+            }
+        }
+        &--remove {
+            background-color: #fff;
+            margin: 0 0 0 10px;
+            &:before {
+                content: "\f014";
+                color: #C2185B;
+            }
+            &:hover {
+                background-color: #C2185B;
+            }
+        }
+        &--done {
+            background-color: #fff;
+            &:before {
+                content: "\f00c";
+                color: $accent;
+            }
+            &:hover {
+                background-color: $accent;
+            }
+        }
+    }
+}

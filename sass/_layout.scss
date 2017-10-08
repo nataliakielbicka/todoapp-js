@@ -1,0 +1,53 @@
+html,
+body {
+    background-image: url(../img/bg.jpg);
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    color: #212121;
+    font-family: 'Roboto', sans-serif;
+    font-size: 20px;
+    font-weight: 300;
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    height: 100%;
+    overflow-x: hidden;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+strong {
+    font-weight: bold;
+}
+
+::-webkit-input-placeholder {
+    /* Chrome/Opera/Safari */
+    color: #fff;
+    opacity: 0.5;
+}
+
+::-moz-placeholder {
+    /* Firefox 19+ */
+    color: #fff;
+    opacity: 0.5;
+}
+
+:-ms-input-placeholder {
+    /* IE 10+ */
+    color: #fff;
+    opacity: 0.5;
+}
+
+:-moz-placeholder {
+    /* Firefox 18- */
+    color: #fff;
+    opacity: 0.5;
+}
+
+.copy {
+    font-size: 14px;
+    @include absolute(auto,30px,10px,auto);
+}

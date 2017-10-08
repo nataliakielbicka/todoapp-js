@@ -1,0 +1,20 @@
+@mixin radius($top,$right,$bottom,$left) {
+    border-top-left-radius: $top;
+    border-top-right-radius: $right;
+    border-bottom-right-radius: $bottom;
+    border-bottom-left-radius: $left;
+}
+
+@mixin absolute($top,$right,$bottom,$left) {
+    position: absolute;
+    top: $top;
+    right: $right;
+    bottom: $bottom;
+    left: $left;
+}
+
+@mixin bg($size) {
+    background-repeat: no-repeat;
+    background-size: $size auto;
+    background-position: center center;
+}

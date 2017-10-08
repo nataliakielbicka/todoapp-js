@@ -1,0 +1,152 @@
+.todo-wrapper {
+    display: block;
+    margin: auto;
+    max-width: 1000px;
+    @media all and (max-width: 768px) {
+        padding: 0 10px;
+    }
+    &__h2 {
+        font-size: 34px;
+        font-weight: bold;
+        margin: 30px 0;
+        text-align: center;
+    }
+}
+
+.todo {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-direction: column;
+    &__header {
+        background-color: $color;
+        @include radius(5px,5px,5px,5px);
+        @extend %shadow;
+        max-width: 500px;
+        margin: 0 auto 20px auto;
+        width: 100%;
+        padding: 15px;
+        position: relative;
+        
+    }
+    &__input {
+        background-color: $color2;
+        border: $color2;
+        @include radius(5px,30px,30px,5px);
+        @extend %shadow;
+        color: #fff;
+        font-size: 20px;
+        font-weight: 300;
+        height: 60px;
+        padding: 10px 70px 10px 10px;
+        width: 100%;
+        &:focus {
+            outline: none;
+        }
+    }
+    &__btn {
+        background-color: $accent;
+        border-radius: 50%;
+        border: none;
+        @extend %shadow;
+        cursor: pointer;
+        height: 60px;
+        float: right;
+        width: 60px;
+        @include absolute(15px,15px,auto,auto);
+        line-height: 60px;
+        text-align: center;
+        &:focus {
+            outline: none;
+        }
+        &:before {
+            content: "\f067";
+            color: #fff;
+            font-family: FontAwesome;
+            font-size: 29px;
+            @include absolute(0,auto,auto,0);
+            width: 100%;
+        }
+    }
+    &__warning {
+        background-color: $accent;
+        @include radius(5px,5px,5px,5px);
+        color: #fff;
+        font-size: 16px;
+        @extend %shadow;
+        margin: 0 0 20px 0;
+        opacity: 0;
+        padding: 10px;
+        transition: 0.5s ease-in;
+    }
+    &__body {
+        background-color: $color3;
+        @include radius(0,0,5px,5px);
+        padding: 15px;
+        
+    }
+    &__h2 {
+        color: #fff;
+        background-color: $accent;
+        @include radius(5px,5px,5px,5px);
+        font-size: 20px;
+        @extend %shadow;
+        padding: 10px;
+        margin: 0 0 30px 0;
+        .fa {
+            float: right;
+        }
+    }
+    &__text {
+        color: #212121;
+        font-weight: 300;
+        font-size: 16px;
+        margin: 0 0 30px 0;
+        text-align: center;
+    }
+    &__list {
+        margin: 0;
+        padding: 0;
+        &--done {
+            .item__buttons {
+                &--done {
+                    background-color: $accent;
+                    &:before {
+                        color: #fff;
+                    }
+                    &:hover {
+                        background-color: #fff;
+                        transition: 0.2s ease-in;
+                        &:before {
+                            color: $accent;
+                        }
+                    }
+                }
+            }
+        }
+    }
+    &-boxes {
+        align-items: flex-start;
+        flex-direction: row;
+        @media screen and (max-width: 768px) {
+            align-items: center;
+            flex-direction: column;
+        }
+    }
+    &__column {
+        flex: 1;
+        width: 100%;
+        max-width: 45%;
+        align-items: top;
+        @include radius(5px,5px,5px,5px);
+        margin: 0 0 15px 0;
+        @extend %shadow;
+        @media screen and (max-width: 768px) {
+            max-width: 500px;
+            margin: 0 0 30px 0;
+        } 
+    }
+    &__body {
+        @include radius(5px,5px,5px,5px);
+    }
+}

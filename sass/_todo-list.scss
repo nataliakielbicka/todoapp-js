@@ -1,0 +1,18 @@
+.list {
+    &__item {
+        display: flex;
+        align-items: center;
+        background-color: $color2;
+        @include radius(5px,5px,5px,5px);
+        color: #fff;
+        @extend %shadow;
+        margin: 0 0 20px 0;
+        min-height: 60px;
+        padding: 10px;
+        width: 100%;
+        &:last-child {
+            margin: 0;
+        }
+         
+    }
+}
